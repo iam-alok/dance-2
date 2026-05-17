@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Star Dance & Guitar Academy | Katni</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8cc7a;
+            --dark: #0d0c0a;
+            --dark2: #1a1814;
+            --cream: #f5f0e8;
+            --cream2: #ede5d5;
+            --text: #2a2420;
+            --muted: #8a7d6e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.2rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 12, 10, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream2);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--dark) !important;
+        }
+
+        /* HERO */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 6%;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 80%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 80px,
+                rgba(201, 168, 76, 0.03) 80px,
+                rgba(201, 168, 76, 0.03) 81px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+
+        .hero-tag {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.5s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.9s forwards;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.9rem 2rem;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            padding: 0.9rem 2rem;
+            border: 1px solid rgba(245, 240, 232, 0.3);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 520px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease 1s forwards;
+        }
+
+        .hero-visual-inner {
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 168, 76, 0.03);
+        }
+
+        .hero-visual-inner::before {
+            content: '';
+            position: absolute;
+            top: -15px; left: -15px;
+            right: 15px; bottom: 15px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .dance-figure {
+            font-size: 10rem;
+            line-height: 1;
+            filter: drop-shadow(0 0 40px rgba(201, 168, 76, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--dark);
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-badge strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .hero-badge span {
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* STATS */
+        .stats-bar {
+            background: var(--dark2);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 2.5rem 6%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* CLASSES */
+        #classes {
+            padding: 6rem 6%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+        }
+
+        .class-card {
+            background: var(--dark2);
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: default;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--gold);
+            transition: height 0.4s;
+        }
+
+        .class-card:hover::before { height: 100%; }
+
+        .class-card:hover {
+            background: rgba(201, 168, 76, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .class-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .class-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .class-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .class-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .class-tag {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 0.3rem 0.8rem;
+        }
+
+        /* SCHEDULE */
+        #schedule {
+            padding: 6rem 6%;
+            background: var(--dark2);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .schedule-card {
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .schedule-card:hover {
+            border-color: rgba(201, 168, 76, 0.5);
+        }
+
+        .schedule-day {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .schedule-class {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-time {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* WHY US */
+        #why {
+            padding: 6rem 6%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .why-content .section-header {
+            text-align: left;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            align-items: flex-start;
+        }
+
+        .why-item:last-child { border-bottom: none; }
+
+        .why-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .why-text strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .why-text span {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .why-visual {
+            position: relative;
+        }
+
+        .why-box {
+            background: var(--dark2);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .why-box::after {
+            content: '';
+            position: absolute;
+            bottom: -12px; right: -12px;
+            left: 12px; top: 12px;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            z-index: -1;
+        }
+
+        .why-emoji {
+            font-size: 6rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .why-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--gold-light);
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 6rem 6%;
+            background: var(--dark2);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            color: var(--gold);
+        }
+
+        .contact-detail strong {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-detail span {
+            font-size: 1rem;
+        }
+
+        .contact-detail a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-detail a:hover { color: var(--gold); }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-field label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .form-field select option {
+            background: var(--dark2);
+        }
+
+        .form-field textarea { resize: vertical; min-height: 100px; }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 2.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .footer-text {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover { transform: scale(1.1); }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero-visual { display: none; }
+            .nav-links { display: none; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+            #why { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">✦ Little Star Academy</div>
+    <ul class="nav-links">
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#why">About</a></li>
+        <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+        <p class="hero-tag">✦ Katni's Premier Dance & Music Academy</p>
+        <h1 class="hero-title">
+            Move to the<br>
+            <em>Rhythm.</em><br>
+            Play the Music.
+        </h1>
+        <p class="hero-desc">
+            Discover the joy of dance and music at Little Star Academy — where passion meets professional training for students of all ages.
+        </p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Enroll Today</a>
+            <a href="#classes" class="btn-outline">View Classes</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-visual-inner">
+            <span class="dance-figure">💃</span>
+            <div class="hero-badge">
+                <strong>500+</strong>
+                <span>Happy Students</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Students Trained</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Art Forms</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Passion Driven</div>
+    </div>
+</div>
+
+<!-- CLASSES -->
+<section id="classes">
+    <div class="section-header">
+        <p class="section-tag">✦ What We Teach</p>
+        <h2 class="section-title">Our <em>Classes</em></h2>
+    </div>
+    <div class="classes-grid">
+        <div class="class-card">
+            <span class="class-icon">💃</span>
+            <h3 class="class-name">Dance Classes</h3>
+            <p class="class-desc">From classical to contemporary, our dance program builds rhythm, grace, and confidence. Beginner to advanced batches available for all age groups.</p>
+            <div class="class-tags">
+                <span class="class-tag">Classical</span>
+                <span class="class-tag">Bollywood</span>
+                <span class="class-tag">Western</span>
+                <span class="class-tag">Kids Batch</span>
+            </div>
+        </div>
+        <div class="class-card">
+            <span class="class-icon">🎸</span>
+            <h3 class="class-name">Guitar Classes</h3>
+            <p class="class-desc">Learn to play guitar from scratch or advance your skills. Our expert instructors teach both acoustic and rhythm guitar with a structured curriculum.</p>
+            <div class="class-tags">
+                <span class="class-tag">Acoustic</span>
+                <span class="class-tag">Rhythm</span>
+                <span class="class-tag">Beginner</span>
+                <span class="class-tag">Advanced</span>
+            </div>
+        </div>
+        <div class="class-card">
+            <span class="class-icon">🌟</span>
+            <h3 class="class-name">Performance Training</h3>
+            <p class="class-desc">Special batches focused on stage presence, competition preparation, and annual performance shows. Build real-world performance confidence.</p>
+            <div class="class-tags">
+                <span class="class-tag">Stage Training</span>
+                <span class="class-tag">Competition Prep</span>
+                <span class="class-tag">Annual Show</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+    <div class="section-header">
+        <p class="section-tag">✦ Batch Timings</p>
+        <h2 class="section-title">Class <em>Schedule</em></h2>
+    </div>
+    <div class="schedule-grid">
+        <div class="schedule-card">
+            <div class="schedule-day">Monday – Wednesday – Friday</div>
+            <div class="schedule-class">💃 Dance — Kids Batch</div>
+            <div class="schedule-time">5:00 PM – 6:00 PM</div>
+        </div>
+        <div class="schedule-card">
+            <div class="schedule-day">Monday – Wednesday – Friday</div>
+            <div class="schedule-class">💃 Dance — Senior Batch</div>
+            <div class="schedule-time">6:00 PM – 7:30 PM</div>
+        </div>
+        <div class="schedule-card">
+            <div class="schedule-day">Tuesday – Thursday – Saturday</div>
+            <div class="schedule-class">🎸 Guitar — Beginner</div>
+            <div class="schedule-time">5:00 PM – 6:00 PM</div>
+        </div>
+        <div class="schedule-card">
+            <div class="schedule-day">Tuesday – Thursday – Saturday</div>
+            <div class="schedule-class">🎸 Guitar — Advanced</div>
+            <div class="schedule-time">6:00 PM – 7:30 PM</div>
+        </div>
+        <div class="schedule-card">
+            <div class="schedule-day">Sunday</div>
+            <div class="schedule-class">🌟 Performance Batch</div>
+            <div class="schedule-time">10:00 AM – 12:00 PM</div>
+        </div>
+        <div class="schedule-card">
+            <div class="schedule-day">Flexible</div>
+            <div class="schedule-class">📞 Custom Batch</div>
+            <div class="schedule-time">Call to Enquire</div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+    <div class="why-content">
+        <div class="section-header">
+            <p class="section-tag">✦ Why Choose Us</p>
+            <h2 class="section-title">Where <em>Talent</em><br>Finds Its Stage</h2>
+        </div>
+        <ul class="why-list">
+            <li class="why-item">
+                <span class="why-icon">✦</span>
+                <div class="why-text">
+                    <strong>Expert Instructors</strong>
+                    <span>Trained and experienced faculty dedicated to bringing out the best in every student.</span>
+                </div>
+            </li>
+            <li class="why-item">
+                <span class="why-icon">✦</span>
+                <div class="why-text">
+                    <strong>All Age Groups Welcome</strong>
+                    <span>From young children to adults — we have the right batch for everyone.</span>
+                </div>
+            </li>
+            <li class="why-item">
+                <span class="why-icon">✦</span>
+                <div class="why-text">
+                    <strong>Performance Opportunities</strong>
+                    <span>Regular shows and events give students real stage experience.</span>
+                </div>
+            </li>
+            <li class="why-item">
+                <span class="why-icon">✦</span>
+                <div class="why-text">
+                    <strong>Affordable Fee Structure</strong>
+                    <span>Quality training at fees that don't break the budget.</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="why-visual">
+        <div class="why-box">
+            <span class="why-emoji">🎵</span>
+            <p class="why-quote">"Every child is born with a rhythm — we just help them find it."</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-header">
+        <p class="section-tag">✦ Get In Touch</p>
+        <h2 class="section-title">Enroll <em>Today</em></h2>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Come Join Us</h3>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-detail">
+                    <strong>Phone / WhatsApp</strong>
+                    <span><a href="tel:+919179822189">091798 22189</a></span>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-detail">
+                    <strong>Location</strong>
+                    <span>Katni, Madhya Pradesh</span>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🕐</div>
+                <div class="contact-detail">
+                    <strong>Academy Hours</strong>
+                    <span>Mon – Sat: 4:30 PM – 8:00 PM</span>
+                </div>
+            </div>
+            <br>
+            <a href="tel:+919179822189" class="btn-primary" style="display:inline-block; margin-top:0.5rem">📞 Call Now to Enroll</a>
+        </div>
+        <div>
+            <form class="inquiry-form" onsubmit="handleForm(event)">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Student Name</label>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Age</label>
+                        <input type="number" placeholder="Age" min="4" max="50" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Your WhatsApp Number" required>
+                </div>
+                <div class="form-field">
+                    <label>Interested In</label>
+                    <select required>
+                        <option value="">Select Class</option>
+                        <option>Dance Classes</option>
+                        <option>Guitar Classes</option>
+                        <option>Both Dance & Guitar</option>
+                        <option>Performance Batch</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Message (Optional)</label>
+                    <textarea placeholder="Any questions or special requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%; text-align:center; padding:1rem">Send Inquiry ✦</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">✦ Little Star Academy</div>
+    <div class="footer-text">© 2025 Little Star Dance & Guitar Academy, Katni</div>
+    <div class="footer-text">📞 091798 22189</div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/919179822189" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+    function handleForm(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.textContent = '✓ Inquiry Sent!';
+        btn.style.background = '#2d6a4f';
+        setTimeout(() => {
+            btn.textContent = 'Send Inquiry ✦';
+            btn.style.background = '';
+            e.target.reset();
+        }, 3000);
+    }
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.class-card, .schedule-card, .why-item, .stat-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
